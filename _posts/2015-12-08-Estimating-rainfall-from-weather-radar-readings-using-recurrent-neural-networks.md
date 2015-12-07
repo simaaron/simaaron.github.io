@@ -57,7 +57,7 @@ A toy sequence regression task to add the numbers in the top row at the location
 
 <figure>
 <center>
-<img src="/images/RNN_01.png" alt="Dropin augmentation" width="450">
+<img src="/images/RNN_01.png" alt="Dropin augmentation" width="400">
 </center>
 <figcaption>
 "Dropin" augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour) 
