@@ -82,17 +82,20 @@ One attractive feature of RNNs is that they accept input sequences of varying le
 The training set consists of data from the first 20 days of each month and the test set data from the remaining days of the month. This ensured that the training and test sets are more or less independent. However, as was pointed out in the competition forum, because the calendar time and location data was not provided, it was impossible to construct a truly independent local validation holdout subset; there was no way of ensuring that any two gauge readings were not correlated in time or space. This has implications in that it was very difficult to detect cases of overfitting without submissions to the public leaderboard (see Training section below for more details).
 
 ### Data augmentation 
-One 
+One common method to reduce overfitting is to augment the training set via label-preserving transformations on the data. The classic examples in image classification tasks are cropping and perturbations of the orientation, brightness and colour of the images.
+
+For the radar sequence data, I implemented a form of _dropin_ augmentation on the data where the sequences were lengthened to a fixed length by duplicating the vectors at random time points, as shown below:
 
 <figure>
 <center>
 <img src="/images/RNN_01.png" alt="Dropin augmentation" width="500">
 </center>
 <figcaption>
-"Dropin" augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour) 
+'Dropin' augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour). Note that the time-order of the augmented sequence is preserved.
 </figcaption>
 </figure>
 
+In the 
 ## RNN architecture
 One 
 
