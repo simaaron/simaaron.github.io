@@ -33,7 +33,7 @@ For the contest, each radar measurement is condensed into 22 features. These inc
 The preditions were evaluated based on the mean absolute error (MAE) to the actual rain gauge readings. 
 
 
-### The solution: Recurrent neural networks
+### The solution: Recurrent Neural Networks
 The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example): 
 
 <figure>
