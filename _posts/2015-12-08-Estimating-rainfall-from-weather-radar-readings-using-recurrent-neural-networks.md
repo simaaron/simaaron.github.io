@@ -33,11 +33,11 @@ The preditions were evaluated based on the mean absolute error (MAE) to the actu
 
 
 ### The solution: Recurrent neural networks
-The prediction of cumulative values from variable length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example. 
+The prediction of cumulative values from variable length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example). 
 
 <figure>
 <center>
-<img src="/images/RNN_01.png" alt="Dropin augmentation" width="450">
+<img src="/images/RNN_addition.png" alt="The Additional Problem" width="450">
 </center>
 <figcaption>
 "Dropin" augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour) 
