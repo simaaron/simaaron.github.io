@@ -63,12 +63,15 @@ I trained the models on several NVIDIA GPUs in my lab, which include two Tesla K
 From the outset, the data presented several challenges:
 1. Outliers
 2. Sequence data with variable lengths and time labels
-3. Train/test allocations
+3. Excluded information in the training set
 
 #### Outliers
-It was well-documented from the start, and much discussed in the competition forum, that a large proportion of the hourly rain gauge measurements were not be trusted (e.g. clogged rain gauges). Given that some of these values are several orders of magnitude higher than what is physically possible anywhere on earth, the MAE values participants were reporting were dominated by these extreme outliers. However, since the evaluation metric was the MAE rather than the root mean squared error (RMSE), one can simply view the outliers as an annoying source of extrinsic noise in the evaluation scores; the absolute values of the MAE are, however and in my view, close to meaningless without prior knowledge of typical weather patterns in the US midwest.
+It was well-documented from the start, and much discussed in the competition forum, that a large proportion of the hourly rain gauge measurements were not be trusted (e.g. clogged rain gauges). Given that some of these values are several orders of magnitude higher than what is physically possible anywhere on earth, the MAE values participants were reporting were dominated by these extreme outliers. However, since the evaluation metric was the MAE rather than the root mean squared error (RMSE), one can simply view the outliers as an annoying source of extrinsic noise in the evaluation scores; the absolute values of the MAE are however, in my view, close to meaningless without prior knowledge of typical weather patterns in the US midwest.
 
-The approach I and many others took was simply to exclude from the training set the rain gauges with readings above 70mm. Over the course of the competition I experimented with several different thresholds from 53mm to 73mm, and did a few runs where I removed this pre-processing step altogether. Contrary to what was reported in the previous version of this competition, this had very little positive or negative effect (although I did not investigate it throughly); it appears that the RNN model was able to ignore
+The approach I and many others took was simply to exclude from the training set the rain gauges with readings above 70mm/h. Over the course of the competition I experimented with several different thresholds from 53mm to 73mm, and did a few runs where I removed this pre-processing step altogether. Contrary to what was reported in the previous version of this competition, this had very little effect (positive or negative); it appears, and I speculate, that the RNN model was trained to ignore the outliers, as suggested by the reasonable maximum values of expected hourly rain gauge levels predicted for the test set (~40-50mm/h).
+
+#### Variable lengths and non-standard time labels
+The weather radar sequences varied in length from one to 19 readings per hourly rain gauge record. Furthermore these occur at seemingly random points within the hour. This was not your typical time-series dataset (EEG waveforms, daily stock market prices, etc)
 
 
 ### Data augmentation 
