@@ -38,7 +38,7 @@ The prediction of cumulative values from variable-length sequences of vectors wi
 
 <figure>
 <center>
-<img src="/images/RNN_adding.png" alt="The Adding Problem" width="500">
+<img src="/images/RNN_adding.png" alt="The Adding Problem" width="550">
 </center>
 <figcaption>
 The prediction target of 1.7 is obtained by summing up the numbers in the top row where the corresponding number in the bottom row is equal to one (i.e. the green boxes). The regression task is to infer this generative model from a training set consisting of random sequences of arbitrary lengths and their targets.
@@ -61,8 +61,11 @@ I trained the models on several NVIDIA GPUs in my lab, which include two Tesla K
 
 ### Data pre-processing
 From the outset, the data presented several challenges:
+
 1. Extreme and unpredictable outliers
+
 2. Variable sequence lengths and non-standardised time labels
+
 3. Excluded information in the training set
 
 #### Extreme and unpredictable outliers
