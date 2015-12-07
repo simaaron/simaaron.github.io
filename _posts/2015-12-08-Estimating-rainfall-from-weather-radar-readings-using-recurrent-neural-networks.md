@@ -100,7 +100,7 @@ Over the competition I experimented with fixed sequence lengths of 19, 21, 24 an
 My original intention was to find a way to standardise the sequence lengths to facilitate mini-batches stochastic gradient descent training. How it soon became clear that it could be a useful regularisation-like technique. To the best of my knowledge this is a novel methodological contribution.
 
 ## RNN architecture
-One 
+The best performing architecture I found over the competition is a 3-layer deep stacked bidirectional RNN, with additional single dense layers after 
 
 ### Design evolution
 
