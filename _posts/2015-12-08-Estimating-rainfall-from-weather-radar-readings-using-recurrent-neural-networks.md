@@ -97,7 +97,7 @@ For the radar sequence data, I implemented a form of _dropin_ augmentation on th
 
 Over the competition I experimented with fixed sequence lengths of 19, 21, 24 and 32 timepoints. I found that stretching out the sequence lengths beyond 21 timesteps was too aggressive as the models started to underfit. 
 
-My original intention was to find a way to standardise the sequence lengths to facilitate the construction of mini-batches when implementing stochastic gradient descent. How it soon became clear that it could be a useful regularisation technique. To the best of my knowledge this is a novel methodological contribution.
+My original intention was to find a way to standardise the sequence lengths to facilitate mini-batches stochastic gradient descent training. How it soon became clear that it could be a useful regularisation-like technique. To the best of my knowledge this is a novel methodological contribution.
 
 ## RNN architecture
 One 
