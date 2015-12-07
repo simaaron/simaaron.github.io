@@ -75,6 +75,9 @@ The weather radar sequences varied in length from one to 19 readings per hourly 
 
 One attractive feature of RNNs is that they accept input sequences of varying lengths due to weight sharing in the hidden layers. Because of this, I did no pre-processing beyond removing the outliers (as described above) and replacing any missing radar feature values with zero; I retained each the timestamp as a component in the feature vector and preserved the sequential nature of the input.
 
+#### Excluded information in the training set
+The training set consists of data from the first 20 days of each month and the test set data from the remaining days of the month. This ensured that the training and test sets are more or less independent. However, as was pointed out in the competition forum, because the calendar time and location data was not provided, it was impossible to construct a truly independent local validation holdout subset; there was no way of ensuring that any two gauge readings were not 
+
 
 ### Data augmentation 
 
