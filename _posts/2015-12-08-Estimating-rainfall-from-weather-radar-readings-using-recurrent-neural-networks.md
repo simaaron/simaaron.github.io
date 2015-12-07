@@ -49,10 +49,11 @@ In our rainfall prediction problem, the situation is somewhat less trivial as th
 
 In the [previous version](https://www.kaggle.com/c/how-much-did-it-rain) of this contest (which I did not participate in), gradient boosting was the undisputed star of the show; neural networks, at least to my knowledge, were not deployed with much success. If RNNs could work as well as I hoped it would, then I might have a chance of coming up with a unique, if unreasonably effective, solution (i.e. win!).
 
-For a overview of RNNs, the [blog post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) by Andrej Karpathy is as good a general introduction to the subject as you will find anywhere else.
+For a overview of RNNs, the [blog post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) by Andrej Karpathy is as good a general introduction to the subject as you will find anywhere.
 
 
 ### Software and hardware
+I used [Python](https://www.python.org/) with [Theano](http://deeplearning.net/software/theano/) throughout, relying heavily on the [Lasagne](http://lasagne.readthedocs.org/en/latest/index.html) layer classes to build the RNN architectures. Additionally, I used [scikit-learn](http://scikit-learn.org/stable/) to implement the cross-validation testing splits, [pandas](http://pandas.pydata.org/) and [NumPy](http://www.numpy.org/) to process and format the data and submission files.
 
 ## Data pre-processing and augmentation
 
