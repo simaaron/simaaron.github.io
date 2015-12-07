@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 description: Data analysis competition solution
 modified: {}
