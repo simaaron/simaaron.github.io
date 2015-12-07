@@ -34,16 +34,18 @@ The preditions were evaluated based on the mean absolute error (MAE) to the actu
 
 
 ### The solution: Recurrent neural networks
-The prediction of cumulative values from variable length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example): 
+The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example): 
 
 <figure>
 <center>
 <img src="/images/RNN_adding.png" alt="The Additional Problem" width="400">
 </center>
 <figcaption>
-A toy sequence regression task to add the numbers in the top row at the locations where the corresponding number at the bottom is equal to one. The prediction target of 1.7 is the sum of the values in the green boxes. 
+The prediction target of 1.7 is obtained by summing up the numbers in the top row where the corresponding number in the bottom row is equal to one (i.e. the green boxes). The regression task is to infer this generative model from a training set of random sequences of arbitrary lengths and their targets.
 </figcaption>
 </figure>
+
+In our rainfall prediction problem, the situation is somewhat less trivial as there is still the additional step of inferring the rainfall 'values' (the top row) from radar measurements. Furthermore, instead of binary 1/0 values (bottom row) one has a continuous time reading between 0 and 60 minutes. Nevertheless, the structural similarities suggests that RNN would be well-suited for the problem. 
 
 ### Software and hardware
 
