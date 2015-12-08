@@ -2,7 +2,8 @@
 published: true
 layout: post
 description: Data analysis competition solution
-modified: {}
+modified: 
+  08/12/2015: null
 tags: 
   - recurrent neural networks
   - kaggle
