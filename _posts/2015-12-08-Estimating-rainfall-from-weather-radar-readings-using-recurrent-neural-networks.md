@@ -134,7 +134,7 @@ Bidirectional, many-to-one, RNN. The final output is the mean of the two, one un
 </figcaption>
 </figure>
 
-The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction:
+The second class of architectures imagines a set of predictors situated at every position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction:
 
 <figure>
 <center>
