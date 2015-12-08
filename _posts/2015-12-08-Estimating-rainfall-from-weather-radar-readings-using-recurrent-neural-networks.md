@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 description: Data analysis competition solution
 modified: {}
@@ -14,6 +14,7 @@ image:
   credit: dargadgetz
   creditlink: "http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/"
 ---
+
 
 
 I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
