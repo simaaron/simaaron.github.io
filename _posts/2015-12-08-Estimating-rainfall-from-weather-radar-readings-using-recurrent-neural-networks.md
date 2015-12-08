@@ -16,7 +16,7 @@ image:
 ---
 
 
-I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from series of weather radar measurements. I came in _last_! I describe my approach in this blog post.
+I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
 
 My research lab supervisor Dr John Pinney and I were in the midst of developing a set of deep learning tools for our current research programme when this competition came along. Due to some overlaps in the statistical tools and data sets (neural networks and variable-length sequences, in particular) I saw it as a good opportunity to validate some of our ideas in a different context (at least that is my _post hoc_ justification for the time spent on this competition!). In the near future I will post about the research project and how it relates to this problem. 
 
@@ -26,15 +26,15 @@ One of things which inspired me to write this up, other than doing well in the c
 
 ### The problem
 
-The goal of the competition was to predict a set of hourly rain gauge measurements--recorded over several months in 2014 over the US midwestern corn-growing states--from sequences of polarmetric weather radar data. These radar readings represent instantaneous snapshots of precipitation types and levels and is used to estimate rainfall levels over a wider area (e.g. nationwide) than can practically be covered by rain gauges.
+The goal of the competition was to use sequences of polarmetric weather radar data to predict a set of hourly rain gauge measurements recorded over several months in 2014 over the US midwestern corn-growing states. These radar readings represent instantaneous snapshots of precipitation types and levels and is used to estimate rainfall levels over a wider area (e.g. nationwide) than can practically be covered by rain gauges.
 
-For the contest, each radar measurement is condensed into 22 features. These include the minutes past the top of the hour that the radar observation was carried out, the distance of the rain gauge from the radar, and various reflectivity and differential phase readings of both the vertical column above and the areas surrounding the rain gauge. Up to 19 radar records are given per hourly rain gauge reading (and as few as one); intriguingly the number of radar measurements provided should itself contain some information on the rainfall levels as it is apparently not uncommon for meteorologists to request multiple radar sweeps when there are fast-moving storms.
+For the contest, each radar measurement was condensed into 22 features. These include the minutes past the top of the hour that the radar observation was carried out, the distance of the rain gauge from the radar, and various reflectivity and differential phase readings of both the vertical column above and the areas surrounding the rain gauge. Up to 19 radar records are given per hourly rain gauge reading (and as few as a single record); intriguingly the number of radar measurements provided should itself contain some information on the rainfall levels as it is apparently not uncommon for meteorologists to request multiple radar sweeps when there are fast-moving storms.
 
-The preditions were evaluated based on the mean absolute error (MAE) to the actual rain gauge readings. 
+The preditions were evaluated based on the mean absolute error (MAE) relative to actual rain gauge readings. 
 
 
 ### The solution: Recurrent Neural Networks
-The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941) Sec. 4.1, for a recent example): 
+The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is virtually identical to the so-called _Adding Problem_--a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941), Sec. 4.1, for a recent example): 
 
 <figure>
 <center>
@@ -45,9 +45,9 @@ The prediction target of 1.7 is obtained by summing up the numbers in the top ro
 </figcaption>
 </figure>
 
-In our rainfall prediction problem, the situation is somewhat less trivial as there is still the additional step of inferring the rainfall 'values' (the top row) from radar measurements. Furthermore, instead of binary 1/0 values (bottom row) one has continuous time readings between 0 and 60 minutes that have somewhat different roles. Nevertheless, the underlying structural similarities are compelling enough to suggest that RNN would be well-suited for the problem. 
+In our rainfall prediction problem, the situation is somewhat less trivial as there is still the additional step of inferring the rainfall 'numbers' (the top row) from radar measurements. Furthermore, instead of binary 1/0 values (bottom row) one has continuous time readings between 0 and 60 minutes that have somewhat different roles. Nevertheless, the underlying structural similarities are compelling enough to suggest that RNN would be well-suited for the problem. 
 
-In the [previous version](https://www.kaggle.com/c/how-much-did-it-rain) of this contest (which I did not participate in), gradient boosting was the undisputed star of the show; neural networks, at least to my knowledge, were not deployed with much success. If RNNs could work as well as I hoped it would, then I might have a chance of coming up with a unique, if unreasonably effective, solution (i.e. win!).
+In the [previous version](https://www.kaggle.com/c/how-much-did-it-rain) of this contest (which I did not participate in), gradient boosting was the undisputed star of the show; neural networks, at least to my knowledge, were not deployed with much success. If RNNs would prove to be as unreasonably effective here as they are in an increasing array of problems in machine learning, then I might have a chance of coming up with a unique and good solution (i.e. win!).
 
 For a overview of RNNs, the [blog post](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) by Andrej Karpathy is as good a general introduction to the subject as you will find anywhere.
 
