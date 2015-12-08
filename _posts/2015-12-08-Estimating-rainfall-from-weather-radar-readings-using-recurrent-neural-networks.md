@@ -95,15 +95,23 @@ For the radar sequence data, I implemented a form of _dropin_ augmentation on th
 </figcaption>
 </figure>
 
-Over the competition I experimented with fixed sequence lengths of 19, 21, 24 and 32 timepoints. I found that stretching out the sequence lengths beyond 21 timesteps was too aggressive as the models started to underfit. 
+Over the competition I experimented with fixed sequence lengths of 19, 21, 24 and 32 timepoints. I found that stretching out the sequence lengths beyond 21 timesteps was too aggressive as the models began to underfit. 
 
-My original intention was to find a way to standardise the sequence lengths to facilitate mini-batches stochastic gradient descent training. How it soon became clear that it could be a useful regularisation-like technique. To the best of my knowledge this is a novel methodological contribution.
+My original intention was to find a way to standardise the sequence lengths to facilitate mini-batch stochastic gradient descent training. However it soon became clear that it could be a useful way to force the network to learn to factor in the time _intervals_ between observations; specifically, the network is encouraged to _ignore_ readings when the intervals are zero. To the best of my knowledge this is a novel methodological idea.
 
 ## RNN architecture
-The best performing architecture I found over the competition is a 3-layer deep stacked bidirectional (vanilla) RNN with 128 hidden units, with additional single dense layers after each hidden layer. At the top of the network the vector at each time position is fed into a dense layer with a Rectified Linear Unit (ReLU) non-linearity applied to a single output. The final result is obtained by taking the mean of the predictions from each time position. I will explain the evolution of this model in figures below, which should make it clearer. 
+The best performing architecture I found over the competition is a 5-layer deep stacked bidirectional (vanilla) RNN with 64-256 hidden units, with additional single dense layers after each hidden stack. At the top of the network the vector at each time position is fed into a dense layer with a single output before a Rectified Linear Unit (ReLU) non-linearity is applied. The final result is obtained by taking the mean of the predictions from each time position. I will explain the evolution of this model, which largely mirrors the way I developed my models, in figures below. 
 
 ### Design evolution
+The basic model inspired by the _adding problem_ is a single layer RNN (Fig 3):
 
+The RNN basically functions as an integration machine and is employed in a sequence-to-single-output fashion.
+
+The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider bidirectional RNN (Fig 4):
+
+The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction (Fig 5).
+
+Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network. One idea 
 
 ### Nonlinearities
 
