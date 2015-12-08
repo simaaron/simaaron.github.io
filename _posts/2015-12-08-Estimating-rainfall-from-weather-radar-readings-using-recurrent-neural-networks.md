@@ -127,7 +127,7 @@ The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_arc_2.png" alt="RNN-bidirectional" width="450">
+<img src="/images/RNN_arc_2.png" alt="RNN-bidirectional" width="400">
 </center>
 <figcaption>
 Bidirectional, many-to-one, RNN. The final output is the mean of the two, one unit wide, dense layers.
@@ -149,7 +149,7 @@ Finally, there are all manner of enhancements one can employ to create a deep ne
 
 <figure>
 <center>
-<img src="/images/RNN_arc_4.png" alt="RNN-stack" width="400">
+<img src="/images/RNN_arc_4.png" alt="RNN-stack" width="450">
 </center>
 <figcaption>
 A two-stack deep RNN. The red numbers indicate the number of units in each layer. The best fitting model in the contest was a five-stack deep version of the above architecture with number of units from bottom to top of (64, 128, 256, 128, 64).
