@@ -53,7 +53,7 @@ For a overview of RNNs, the [blog post](http://karpathy.github.io/2015/05/21/rnn
 
 
 ### Software and hardware
-I used [Python](https://www.python.org/) with [Theano](http://deeplearning.net/software/theano/) throughout, relying heavily on the [Lasagne](http://lasagne.readthedocs.org/en/latest/index.html) layer classes to build the RNN architectures. Additionally, I used [scikit-learn](http://scikit-learn.org/stable/) to implement the cross-validation testing splits, and [pandas](http://pandas.pydata.org/) and [NumPy](http://www.numpy.org/) to process and format the data and submission files.
+I used [Python](https://www.python.org/) with [Theano](http://deeplearning.net/software/theano/) throughout, relying heavily on the [Lasagne](http://lasagne.readthedocs.org/en/latest/index.html) layer classes to build the RNN architectures. Additionally, I used [scikit-learn](http://scikit-learn.org/stable/) to implement the cross-validation splits, and [pandas](http://pandas.pydata.org/) and [NumPy](http://www.numpy.org/) to process and format the data and submission files. To this day I have an irrational aversion to Matplotlib (even with Seaborn) and so all my plots are done in [R](https://www.r-project.org/).
 
 I trained the models on several NVIDIA GPUs in my lab, which include two Tesla K20 and three M2090 cards.
 
