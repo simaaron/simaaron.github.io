@@ -17,6 +17,7 @@ image:
 
 
 
+
 I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
 
 My research lab supervisor Dr John Pinney and I were in the midst of developing a set of deep learning tools for our current research programme when this competition came along. Due to some overlaps in the statistical tools and data sets (neural networks and variable-length sequences, in particular) I saw it as a good opportunity to validate some of our ideas in a different context (at least that is my _post hoc_ justification for the time spent on this competition!). In the near future I will post about the research project and how it relates to this problem. 
@@ -105,6 +106,15 @@ The best performing architecture I found over the competition is a 5-layer deep 
 
 ### Design evolution
 The basic model inspired by the _adding problem_ is a single layer RNN (Fig 3):
+
+<figure>
+<center>
+<img src="/images/RNN_01.png" alt="Dropin augmentation" width="500">
+</center>
+<figcaption>
+_Dropin_ augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour). Note that the temporal partial order of the augmented sequence is preserved.
+</figcaption>
+</figure>
 
 The RNN basically functions as an integration machine and is employed in a sequence-to-single-output fashion.
 
