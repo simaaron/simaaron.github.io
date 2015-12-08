@@ -184,14 +184,11 @@ My biggest surprise was that implementing dropout consistently led to poorer res
 
 For this reason, I did not bother with weight decay as well, as I reasoned that the main problem was under- rather than overfitting the data.
 
-
-
-
-I used the Adadelta
-
 ## Model ensembles
 
 ### Test-time augmentation
+To predict each expected rainfall value, I took the mean of 61 separate rain gauge predictions, each of which uses a different random _dropin_ augmentation of the radar data sequence. This procedure was responsible for the biggest improvement in the public leaderboard score at the beginning of the competition. 
+
 
 ### Averaging models
 
