@@ -119,7 +119,7 @@ Basic many-to-one RNN.
 </figcaption>
 </figure>
 
-The RNN basically functions as an integration machine and is employed in a sequence-to-single-output fashion.
+The RNN basically functions as an integration machine and is employed in a many-to-one fashion.
 
 The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider bidirectional RNN:
 
