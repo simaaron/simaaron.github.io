@@ -110,7 +110,7 @@ The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="500">
+<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="400">
 </center>
 <figcaption>
 Basic many-to-one RNN.
@@ -120,6 +120,17 @@ Basic many-to-one RNN.
 The RNN basically functions as an integration machine and is employed in a sequence-to-single-output fashion.
 
 The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider bidirectional RNN:
+
+The basic model inspired by the _adding problem_ is a single layer RNN:
+
+<figure>
+<center>
+<img src="/images/RNN_arc_2.png" alt="RNN-bidirectional" width="400">
+</center>
+<figcaption>
+Bidirectional, many-to-one, RNN. The final output is the mean of the two, one unit wide, dense layers.
+</figcaption>
+</figure>
 
 The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction (Fig 5).
 
