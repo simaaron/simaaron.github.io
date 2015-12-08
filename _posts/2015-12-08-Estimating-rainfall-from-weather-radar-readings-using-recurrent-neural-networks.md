@@ -180,17 +180,23 @@ Most of the models used the default weight initialisation settings of the Lasagn
 
 
 ### Regularisation
-My biggest surprise was that implementing dropout consistently led to poorer results. I tried many things, including varying the dropout percentage and implementing it only at the top and/or bottom of the network. This is in stark contrast to the universal effectiveness of dropout in the fully connected layers in CNN architectures.
+My biggest surprise was that implementing dropout consistently led to poorer results, contrary to what was reported in [Zaremba et. al.](http://arxiv.org/abs/1409.2329). I tried many things, including varying the dropout percentage and implementing it only at the top and/or bottom of the network. This is in stark contrast to the universal effectiveness of dropout in the fully connected layers in CNN architectures.
 
-For this reason, I did not bother with weight decay as well, as I reasoned that the main problem was under- rather than overfitting the data.
+For this reason, I did not bother with weight decay as I reasoned that my main issue was under- rather than overfitting the data.
 
 ## Model ensembles
 
 ### Test-time augmentation
-To predict each expected rainfall value, I took the mean of 61 separate rain gauge predictions, each of which uses a different random _dropin_ augmentation of the radar data sequence. This procedure was responsible for the biggest improvement in the public leaderboard score at the beginning of the competition. 
-
+To predict each expected rainfall value, I took the mean of 61 separate rain gauge predictions, each of which uses a different random _dropin_ augmentation of the radar data sequence. Implementing this procedure led to a huge improvement (~0.03) in the public leaderboard score. 
 
 ### Averaging models
+The winning submission was a simple weighted average of 30 separate models. The best model had a score of 23.6971, which should good enough for fifth place; the worst model in the winning ensemble had a score of 23.7123. The weights were chosen using a wholley unscientific mash-up of public leaderboard scores and correlation between test submissions. Given the difficulties in constructing truly independent splits of the training set, I'm not so sure it is possible to do anything more sophisticated, such as stacked generalisation, etc. However I have this feeling that one can do better in this area.
+
+## Final thoughts
+If I were to take one point away from this contest, it is that the days of manually constructing features from data are over; the machines have won. I experienced this in the [Plankton classification contest](https://www.kaggle.com/c/datasciencebowl) where the monumental effort that my teammate and I put into extracting image features was eclipsed within minutes by even the tiniest CNN.
+
+I had lots of fun in this contest and have learnt a lot. Thanks to everyone who contributed to the discussions in competition forum---believe me, I read every single entry! Congratulations to the other winners, and special thanks to the competition organisers and sponsors. I will make my code public very soon. If you have any questions or comment, please feel free to share them. 
 
 
-##
+
+
