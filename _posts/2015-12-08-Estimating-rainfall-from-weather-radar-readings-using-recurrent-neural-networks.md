@@ -156,6 +156,8 @@ A two-stack deep RNN. The red numbers indicate the number of units in each layer
 </figcaption>
 </figure>
 
+I actually started out with [Long-Short Term Memory](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf) (LSTM) units but, in order to reduce the training time, switched to ordinary vanilla RNNs, which turned out to be just as effective. My guess is that the advantages of LSTMs only really shine through for much longer sequences than the radar sequences in this competition.
+
 The final structural idea was to pass the set of predictors at the top layer through a set of 1D convolutional and pooling layers. The motivation for this, other than the irresistable urge to throw the neural network equivalent of the kitchen sink at any and every problem, was the notion of temporal invariance---that the rain collecting in gauges should contribute the same amount to the hourly total regardless of when in the hour it actually entered the rain gauge. In a half-hearted attempt at this, my models unfortunately performed worse and I quickly abandoned it. Although I believe it is definitely worth a second look.
 
 ### Nonlinearities
@@ -166,12 +168,26 @@ I used ReLUs throughout with varying amounts of leakiness in the range 0.0-0.5. 
 ### Local validation
 I began by splitting off 20% of the training set into a stratified (with respect to the number of radar observations) validation holdout set. I soon began to distrust my setup as some models were severely overfitting on the public leaderboard despite improving local validation scores. By the end of the competition I was training my models using the entire training set and relying on the very limited number of public test submissions (two per day) to validate the models, which is exactly what one is often **discouraged** from doing. Due to the peculiarities of the training and test sets in this competition (see above), I believe it was the right thing to do. In further support of this approach, the low levels of leaderboard reshuffling at the end of the competition, relative to similar data science competitions, suggests that the public and private sections of the test data set were highly correlated. 
 
+### Training procedure
+I used stochastic gradient descent (SGD) with the [Adadelta](http://arxiv.org/abs/1212.5701) update rule with a learning rate decay. 
+
+I used a mini-batch size of 64; I found that the models performed consistently worse for mini-batch sizes of 128 and higher, possibly because the probability of having mini-batches without any of the extreme outliers goes to zero.
+
+Each model was trained over approximately 60 full-dataset epochs.
+
 ### Initialisation
-Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et. al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances. In all I gave it e
+Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et. al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances. I suspect that this 
 
 
 ### Regularisation
-My biggest surprise was that dropout 
+My biggest surprise was that implementing dropout consistently led to poorer results. I tried many things, including varying the dropout percentage and implementing it only at the top and/or bottom of the network. This is in stark contrast to the universal effectiveness of dropout in the dense layers of convolutional neural networks. 
+
+For this reason, I did not bother with weight decay as well, as I reasoned that the main problem was under- rather than overfitting the data.
+
+
+
+
+I used the Adadelta
 
 ## Model ensembles
 
