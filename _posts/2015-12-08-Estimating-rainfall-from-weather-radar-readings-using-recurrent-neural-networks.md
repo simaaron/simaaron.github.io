@@ -2,8 +2,7 @@
 published: true
 layout: post
 description: Data analysis competition solution
-modified: 
-  "Tue Dec 08 2015 00:00:00 GMT+0000 (GMT)": null
+modified: 2015-12-08T00:00:00.000Z
 tags: 
   - recurrent neural networks
   - kaggle
