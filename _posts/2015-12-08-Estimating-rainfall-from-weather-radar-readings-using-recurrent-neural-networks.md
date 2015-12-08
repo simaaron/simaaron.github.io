@@ -173,14 +173,14 @@ I used stochastic gradient descent (SGD) with the [Adadelta](http://arxiv.org/ab
 
 I used a mini-batch size of 64; I found that the models performed consistently worse for mini-batch sizes of 128 and higher, possibly because the probability of having mini-batches without any of the extreme outliers goes to zero.
 
-Each model was trained over approximately 60 full-dataset epochs.
+Each model was trained over approximately 60 epochs and depending on the size of the model, the training time ranged from one to five days.
 
 ### Initialisation
 Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et. al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances. I suspect that this 
 
 
 ### Regularisation
-My biggest surprise was that implementing dropout consistently led to poorer results. I tried many things, including varying the dropout percentage and implementing it only at the top and/or bottom of the network. This is in stark contrast to the universal effectiveness of dropout in the dense layers of convolutional neural networks. 
+My biggest surprise was that implementing dropout consistently led to poorer results. I tried many things, including varying the dropout percentage and implementing it only at the top and/or bottom of the network. This is in stark contrast to the universal effectiveness of dropout in the fully connected layers in CNN architectures.
 
 For this reason, I did not bother with weight decay as well, as I reasoned that the main problem was under- rather than overfitting the data.
 
