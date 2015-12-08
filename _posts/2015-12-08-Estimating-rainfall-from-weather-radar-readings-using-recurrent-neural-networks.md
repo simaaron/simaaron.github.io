@@ -92,7 +92,7 @@ For the radar sequence data, I implemented a form of _dropin_ augmentation on th
 
 <figure>
 <center>
-<img src="/images/RNN_01.png" alt="Dropin augmentation" width="500">
+<img src="/images/RNN_01.png" alt="Dropin augmentation" width="450">
 </center>
 <figcaption>
 _Dropin_ augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour). Note that the temporal partial order of the augmented sequence is preserved.
@@ -111,7 +111,7 @@ The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="400">
+<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="350">
 </center>
 <figcaption>
 Basic many-to-one RNN.
@@ -126,7 +126,7 @@ The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_arc_2.png" alt="RNN-bidirectional" width="400">
+<img src="/images/RNN_arc_2.png" alt="RNN-bidirectional" width="450">
 </center>
 <figcaption>
 Bidirectional, many-to-one, RNN. The final output is the mean of the two, one unit wide, dense layers.
@@ -137,7 +137,7 @@ The second class of architectures imagines a set of predictors, each situated at
 
 <figure>
 <center>
-<img src="/images/RNN_arc_3.png" alt="RNN-consensus" width="400">
+<img src="/images/RNN_arc_3.png" alt="RNN-consensus" width="450">
 </center>
 <figcaption>
 Pooling the predictions of the outputs from all the hidden layer timepoints.
