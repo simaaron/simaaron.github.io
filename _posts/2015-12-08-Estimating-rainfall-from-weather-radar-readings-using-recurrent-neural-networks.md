@@ -46,7 +46,7 @@ The prediction of cumulative values from variable-length sequences of vectors wi
 <img src="/images/RNN_adding.png" alt="The Adding Problem" width="475">
 </center>
 <figcaption>
-The prediction target of 1.7 is obtained by summing up the numbers in the top row where the corresponding number in the bottom row is equal to one (i.e. the green boxes). The regression task is to infer this generative model from a training set consisting of random sequences of arbitrary lengths and their targets.
+The prediction target of 1.7 is obtained by taking the sum of the numbers in the top row where the corresponding number in the bottom row is equal to one (i.e. the green boxes). The regression task is to infer this generative model from a training set consisting of random sequences of arbitrary lengths and their targets.
 </figcaption>
 </figure>
 
