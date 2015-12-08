@@ -19,6 +19,7 @@ image:
 
 
 
+
 I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
 
 My research lab supervisor Dr John Pinney and I were in the midst of developing a set of deep learning tools for our current research programme when this competition came along. Due to some overlaps in the statistical tools and data sets (neural networks and variable-length sequences, in particular) I saw it as a good opportunity to validate some of our ideas in a different context (at least that is my _post hoc_ justification for the time spent on this competition!). In the near future I will post about the research project and how it relates to this problem. 
@@ -132,14 +133,32 @@ Bidirectional, many-to-one, RNN. The final output is the mean of the two, one un
 </figcaption>
 </figure>
 
-The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction (Fig 5).
+The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction:
 
-Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network (see [Pascanu et. al.](http://arxiv.org/abs/1312.6026)). In addition to these I included a linear layer to reduce the dimension of the feature vectors from 22 to 16 (Fig 6).
+<figure>
+<center>
+<img src="/images/RNN_arc_3.png" alt="RNN-consensus" width="400">
+</center>
+<figcaption>
+Pooling the predictions of the outputs from all the hidden layer timepoints.
+</figcaption>
+</figure>
 
-The final structural idea was to pass the set of predictors at the top layer through a set of 1D convolutional and pooling layers. The motivation for this, other than the irresistable urge to throw the neural network sink at any and every problem, was the notion of temporal invariance---that the rain collecting in gauges should contribute the same amount to the hourly total regardless of when in the hour it actually entered the rain gauge. In a half-hearted attempt at this, my models performed worse and I quickly abandoned it. Although I believe it is definitely worth a second look.
+Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network (see [Pascanu et. al.](http://arxiv.org/abs/1312.6026)). In addition to these I included a linear layer to reduce the dimension of the feature vectors from 22 to 16, in part to guard against overfitting and partly because the models were beginning to take too long to train (see below):
+
+<figure>
+<center>
+<img src="/images/RNN_arc_4.png" alt="RNN-stack" width="400">
+</center>
+<figcaption>
+A two-stack deep RNN. The best fitting model in the contest was a five-stack deep version of the above architecture.
+</figcaption>
+</figure>
+
+The final structural idea was to pass the set of predictors at the top layer through a set of 1D convolutional and pooling layers. The motivation for this, other than the irresistable urge to throw the neural network equivalent of the kitchen sink at any and every problem, was the notion of temporal invariance---that the rain collecting in gauges should contribute the same amount to the hourly total regardless of when in the hour it actually entered the rain gauge. In a half-hearted attempt at this, my models unfortunately performed worse and I quickly abandoned it. Although I believe it is definitely worth a second look.
 
 ### Nonlinearities
-I used ReLUs throughout with varying amounts of leakiness in the range 0.0-0.5. The goal was not to optimise this hyperparameter but to increase the variance in the ensemble of models. Nevertheless I did find that using the original ReLU with no leakiness often resulted in very poor convergence behaviours (i.e. no improvement at all).
+I used ReLUs throughout with varying amounts of leakiness in the range 0.0-0.5. The goal was not to optimise this hyperparameter but to increase the variance in the final ensemble of models. Nevertheless I did find that using the original ReLU with no leakiness often resulted in very poor convergence behaviours (i.e. no improvement at all).
 
 ## Training
 
