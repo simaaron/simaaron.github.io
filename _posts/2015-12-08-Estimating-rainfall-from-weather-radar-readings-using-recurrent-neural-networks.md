@@ -97,10 +97,10 @@ _Dropin_ augmentations of a length-5 sequence to length-8 sequences. The number 
 
 Over the competition I experimented with fixed sequence lengths of 19, 21, 24 and 32 timepoints. I found that stretching out the sequence lengths beyond 21 timesteps was too aggressive as the models began to underfit. 
 
-My original intention was to find a way to standardise the sequence lengths to facilitate mini-batch stochastic gradient descent training. However it soon became clear that it could be a useful way to force the network to learn to factor in the time _intervals_ between observations; specifically, the network is encouraged to ignore readings when the intervals are zero. To the best of my knowledge this is a novel, albeit simple, methodological idea.
+My original intention was to find a way to standardise the sequence lengths to facilitate mini-batch stochastic gradient descent training. However it soon became clear that it could be a useful way to force the network to learn to factor in the time _intervals_ between observations; specifically, the network is encouraged to ignore readings when the intervals are zero. To the best of my knowledge this is a novel, albeit simple, idea.
 
 ## RNN architecture
-The best performing architecture I found over the competition is a 5-layer deep stacked bidirectional (vanilla) RNN with 64-256 hidden units, with additional single dense layers after each hidden stack. At the top of the network the vector at each time position is fed into a dense layer with a single output before a Rectified Linear Unit (ReLU) non-linearity is applied. The final result is obtained by taking the mean of the predictions from each time position. I will explain the evolution of this model using figures in the following section. This roughly mirrors the way I developed the models over the course of the competition.
+The best performing architecture I found over the competition is a 5-layer deep stacked bidirectional (vanilla) RNN with 64-256 hidden units, with additional single dense layers after each hidden stack. At the top of the network the vector at each time position is fed into a dense layer with a single output before a [Rectified Linear Units (ReLU)](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf) non-linearity is applied. The final result is obtained by taking the mean of the predictions from each time position. I will explain the evolution of this model using figures in the following section. This roughly mirrors the way I developed the models over the course of the competition.
 
 ### Design evolution
 The basic model inspired by the _adding problem_ is a single layer RNN (Fig 3):
@@ -111,10 +111,12 @@ The law of gravity aside, and not to mention the second law of thermodynamics, t
 
 The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction (Fig 5).
 
-Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network. One idea 
+Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network (see [Pascanu et. al.](http://arxiv.org/abs/1312.6026)). In addition to these I included a linear layer to reduce the dimension of the feature vectors from 22 to 16 dimensions (Fig 6).
+
+The final structural idea was to pass the set of predictors at the top layer through a set of 1D convolutional and pooling layers. The motivation for this, other than the irresistable urge to throw the neural network sink at any problem, was the notion of temporal invariance---that the rain collecting in gauges should contribute the same amount to the hourly total regardless of when in the hour it actually rained. In a half-hearted attempt at this, my models performed worse and I quickly abandoned it. Although it is definitely worth a second look.
 
 ### Nonlinearities
-
+I used ReLUs throughout with varying amounts of leakiness in the range 0.0-0.5. The goal was not to optimise this hyperparameter but to increase the variance in the ensemble of models. 
 
 ## Training
 
