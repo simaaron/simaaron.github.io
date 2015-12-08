@@ -50,7 +50,7 @@ The prediction target of 1.7 is obtained by taking the sum of the numbers in the
 </figcaption>
 </figure>
 
-In our rainfall prediction problem, the situation is somewhat less trivial as there is still the additional step of inferring the rainfall 'numbers' (the top row) from radar measurements. Furthermore, instead of binary 1/0 values (bottom row) one has continuous time readings between 0 and 60 minutes that have somewhat different roles. Nevertheless, the underlying structural similarities are compelling enough to suggest that RNN would be well-suited for the problem. 
+In our rainfall prediction problem, the situation is somewhat less trivial as there is still the additional step of inferring the rainfall 'numbers' (the top row) from radar measurements. Furthermore, instead of binary 0/1 values (bottom row) one has continuous time readings between 0 and 60 minutes that have somewhat different roles. Nevertheless, the underlying structural similarities are compelling enough to suggest that RNN would be well-suited for the problem. 
 
 In the [previous version](https://www.kaggle.com/c/how-much-did-it-rain) of this contest (which I did not participate in), gradient boosting was the undisputed star of the show; neural networks, at least to my knowledge, were not deployed with much success. If RNNs would prove to be as unreasonably effective here as they are in an increasing array of problems in machine learning, then I might have a chance of coming up with a unique and good solution (i.e. win!).
 
