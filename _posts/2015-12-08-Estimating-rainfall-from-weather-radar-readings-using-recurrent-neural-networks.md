@@ -93,7 +93,7 @@ For the radar sequence data, I implemented a form of _dropin_ augmentation on th
 
 <figure>
 <center>
-<img src="/images/RNN_01.png" alt="Dropin augmentation" width="450">
+<img src="/images/RNN_01.png" alt="Dropin augmentation" width="500">
 </center>
 <figcaption>
 _Dropin_ augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour). Note that the temporal partial order of the augmented sequence is preserved.
@@ -112,7 +112,7 @@ The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="350">
+<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="400">
 </center>
 <figcaption>
 Basic many-to-one RNN.
