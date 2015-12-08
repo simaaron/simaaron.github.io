@@ -105,20 +105,20 @@ My original intention was to find a way to standardise the sequence lengths to f
 The best performing architecture I found over the competition is a 5-layer deep stacked bidirectional (vanilla) RNN with 64-256 hidden units, with additional single dense layers after each hidden stack. At the top of the network the vector at each time position is fed into a dense layer with a single output before the application of a [Rectified Linear Units (ReLU)](http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf) non-linearity. The final result is obtained by taking the mean of the predictions from each time position. I will explain the evolution of this model using figures in the following section. This roughly mirrors the way I developed the models over the course of the competition.
 
 ### Design evolution
-The basic model inspired by the _adding problem_ is a single layer RNN (Fig 3):
+The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
-<img src="/images/RNN_01.png" alt="Dropin augmentation" width="500">
+<img src="/images/RNN_arc_1.png" alt="RNN-basic" width="500">
 </center>
 <figcaption>
-_Dropin_ augmentations of a length-5 sequence to length-8 sequences. The number labels are the timestamps of the given data points (minutes past the hour). Note that the temporal partial order of the augmented sequence is preserved.
+Basic many-to-one RNN.
 </figcaption>
 </figure>
 
 The RNN basically functions as an integration machine and is employed in a sequence-to-single-output fashion.
 
-The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider bidirectional RNN (Fig 4):
+The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider bidirectional RNN:
 
 The second class of architectures imagines a set of predictors, each situated at each position in the time dimension at the top of the network with a view to the past and the future. In this scenario we pool together the outputs from the entire hidden layer to obtain a consensus prediction (Fig 5).
 
