@@ -167,11 +167,11 @@ I used ReLUs throughout with varying amounts of leakiness in the range 0.0-0.5. 
 I began by splitting off 20% of the training set into a stratified (with respect to the number of radar observations) validation holdout set. I soon began to distrust my setup as some models were severely overfitting on the public leaderboard despite improving local validation scores. By the end of the competition I was training my models using the entire training set and relying on the very limited number of public test submissions (two per day) to validate the models, which is exactly what one is often **discouraged** from doing. Due to the peculiarities of the training and test sets in this competition (see above), I believe it was the right thing to do. In further support of this approach, the low levels of leaderboard reshuffling at the end of the competition, relative to similar data science competitions, suggests that the public and private sections of the test data set were highly correlated. 
 
 ### Initialisation
-
+Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et. al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances. In all I gave it e
 
 
 ### Regularisation
-
+My biggest surprise was that dropout 
 
 ## Model ensembles
 
