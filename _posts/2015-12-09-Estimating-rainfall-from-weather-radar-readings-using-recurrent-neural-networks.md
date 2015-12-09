@@ -38,7 +38,7 @@ The preditions were evaluated based on the mean absolute error (MAE) relative to
 
 
 ### The solution: Recurrent Neural Networks
-The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is highly reminiscent of the so-called _Adding Problem_ in machine learning---a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks (RNN) in learning long-term dependencies (see [Le et. al.](http://arxiv.org/abs/1504.00941), Sec. 4.1, for a recent example): 
+The prediction of cumulative values from variable-length sequences of vectors with a 'time' component is highly reminiscent of the so-called _Adding Problem_ in machine learning---a toy sequence regression task that is designed to demonstrate the power of recurrent neural networks (RNN) in learning long-term dependencies (see [Le et al.](http://arxiv.org/abs/1504.00941), Sec. 4.1, for a recent example): 
 
 <figure>
 <center>
@@ -142,7 +142,7 @@ Pooling the predictions of the outputs from all the hidden layer timepoints.
 </figcaption>
 </figure>
 
-Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network (see [Pascanu et. al.](http://arxiv.org/abs/1312.6026)). In addition to these I included a linear layer to reduce the dimension of the feature vectors from 22 to 16, in part to guard against overfitting and partly because the models were beginning to take too long to train (see below):
+Finally, there are all manner of enhancements one can employ to create a deep network such as stacking and inserting dense layers between stacks and at the top of the network (see [Pascanu et al.](http://arxiv.org/abs/1312.6026)). In addition to these I included a linear layer to reduce the dimension of the feature vectors from 22 to 16, in part to guard against overfitting and partly because the models were beginning to take too long to train (see below):
 
 <figure>
 <center>
@@ -173,11 +173,11 @@ I employed mini-batches of size 64 throughout; I found that the models performed
 Each model was trained over approximately 60 epochs and, depending on the size of the model, the training times ranged from one to five days per model.
 
 ### Initialisation
-Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et. al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances.
+Most of the models used the default weight initialisation settings of the Lasagne layer classes. Towards the end of the competition I experimented with the normalized-positive definite weight matrix initialisations proposed in [Talathi et al.](http://arxiv.org/abs/1511.03771) but found no significant effect on the performances.
 
 
 ### Regularisation
-My biggest surprise was that implementing dropout resulted in consistently poorer results, contrary to what had been reported by many others, such as in [Zaremba et. al.](http://arxiv.org/abs/1409.2329). I tried many combinations, including varying the dropout percentage and implementing it only at the top and/or bottom of the network, all without success. This is in stark contrast to the effectiveness of dropout when employed in the fully connected layers of CNN architectures.
+My biggest surprise was that implementing dropout resulted in consistently poorer results, contrary to what had been reported by many others, such as in [Zaremba et al.](http://arxiv.org/abs/1409.2329). I tried many combinations, including varying the dropout percentage and implementing it only at the top and/or bottom of the network, all without success. This is in stark contrast to the effectiveness of dropout when employed in the fully connected layers of CNN architectures.
 
 For this reason, in the limited time available, I did not bother with weight decay as I reasoned that my main issue was under- rather than overfitting the data.
 
