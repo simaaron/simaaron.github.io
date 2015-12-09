@@ -16,6 +16,7 @@ image:
 ---
 
 
+
 I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
 
 ![How much did it rain II]({{ https://www.kaggle.com/c/how-much-did-it-rain-ii }}/images/front_page.png)
@@ -120,8 +121,6 @@ Basic many-to-one RNN.
 The RNN basically functions as an integration machine and is employed in a many-to-one fashion.
 
 The law of gravity aside, and not to mention the second law of thermodynamics, there is nothing preventing us from viewing the problem as rain flying up from rain gauges on the ground and reconstituting itself as clouds. Hence we can introduce a reverse direction and consider a bidirectional RNN:
-
-The basic model inspired by the _adding problem_ is a single layer RNN:
 
 <figure>
 <center>
