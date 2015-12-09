@@ -1,8 +1,8 @@
 ---
-published: 2015-12-09T00:00:00.000Z
+published: true
 layout: post
 description: Data analysis competition solution
-modified: 2015-12-08T00:00:00.000Z
+modified: 2015-12-09T00:00:00.000Z
 tags: 
   - recurrent neural networks
   - kaggle
@@ -14,6 +14,7 @@ image:
   credit: dargadgetz
   creditlink: "http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/"
 ---
+
 
 I recently participated in the Kaggle-hosted data science competition [_How Much Did It Rain II_](https://www.kaggle.com/c/how-much-did-it-rain-ii) where the goal was to predict a set of hourly rainfall levels from sequences of weather radar measurements. I came in _first_! I describe my approach in this blog post.
 
@@ -189,8 +190,4 @@ The winning submission was a simple weighted average of 30 separate models. The 
 ## Final thoughts
 If I were to take one point away from this contest, it is that the days of manually constructing features from data are over; the machines have won. I experienced this in the [Plankton classification contest](https://www.kaggle.com/c/datasciencebowl) where the monumental effort that my teammate and I put into extracting image features was eclipsed within minutes by even the tiniest CNN.
 
-I had lots of fun in this contest and have learnt a lot. Thanks to everyone who contributed to the discussions in competition forum---believe me, I read every single entry! Congratulations to the other winners, and special thanks to the competition organisers and sponsors. I will make my code public very soon. If you have any questions or comment, please feel free to share them. 
-
-
-
-
+I had lots of fun in this contest and have learnt a lot. Thanks to everyone who contributed to the discussions in competition forum---believe me, I read every single entry! Congratulations to the other winners, and special thanks to the competition organisers and sponsors. I will make my code public very soon. If you have any questions or comment, please feel free to share them.
