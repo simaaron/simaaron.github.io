@@ -153,7 +153,7 @@ A two-stack deep RNN. The red numbers indicate the number of units in each layer
 </figcaption>
 </figure>
 
-I actually started out with [Long-Short Term Memory](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf) (LSTM) units but, in order to reduce the training time, switched to ordinary vanilla RNNs, which turned out to be just as effective. My guess is that the advantages of LSTMs are only really apparent for much longer sequences than the radar sequences in this competition.
+I actually started out with [Long-Short Term Memory](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf) (LSTM) units but, in order to reduce the training time, switched to ordinary RNNs with fully connected layers, which turned out to be just as effective. My guess is that the advantages of LSTMs are only really apparent for much longer sequences than the radar sequences in this competition.
 
 The final structural idea was to pass the top layer of the network, or perhaps the input layer itself, through a set of 1D convolutional and pooling layers. The motivation for this, other than the irresistable urge to throw the neural network equivalent of the kitchen sink at any and every problem, was the notion of temporal invariance---that the rain collecting in gauges should contribute the same amount to the hourly total regardless of when in the hour it actually entered the rain gauge. In my half-hearted attempt at this, my models unfortunately performed worse and I promptly abandoned it.
 
