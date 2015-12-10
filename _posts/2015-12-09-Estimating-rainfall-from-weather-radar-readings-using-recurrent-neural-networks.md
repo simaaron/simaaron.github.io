@@ -2,7 +2,7 @@
 published: true
 layout: post
 description: Data analysis competition solution
-modified: 2015-12-09T00:00:00.000Z
+modified: {}
 tags: 
   - recurrent neural networks
   - kaggle
@@ -14,6 +14,7 @@ image:
   credit: dargadgetz
   creditlink: "http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/"
 ---
+
 
 
 
