@@ -2,7 +2,7 @@
 published: true
 layout: post
 description: Data analysis competition solution
-modified: 2015-12-10T00:00:00.000Z
+modified: {}
 tags: 
   - recurrent neural networks
   - kaggle
@@ -14,6 +14,7 @@ image:
   credit: dargadgetz
   creditlink: "http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/"
 ---
+
 
 
 
@@ -195,3 +196,7 @@ The winning submission was a simple weighted average of 30 separate models. The 
 If I were to take one point away from this contest, it is that the days of manually constructing features from data are almost over. The machines will win. I experienced this in the [Plankton classification contest](https://www.kaggle.com/c/datasciencebowl) where the monumental effort that my teammate and I put into extracting image features was eclipsed within minutes by even the shallowest of CNNs.
 
 I had lots of fun in this contest and have learnt a lot. Congratulations to the other winners, and special thanks to the competition organisers and sponsors. I will make my code available soon. If you have any questions or comments, please feel free to share them.
+
+**UPDATE (2 Jan 2016):** The code is now available on GitHub [https://github.com/simaaron/kaggle-Rain](https://github.com/simaaron/kaggle-Rain)
+
+
