@@ -197,6 +197,6 @@ If I were to take one point away from this contest, it is that the days of manua
 
 I had lots of fun in this contest and have learnt a lot. Congratulations to the other winners, and special thanks to the competition organisers and sponsors. I will make my code available soon. If you have any questions or comments, please feel free to share them.
 
-**UPDATE (2 Jan 2016):** The code is now available on GitHub [https://github.com/simaaron/kaggle-Rain](https://github.com/simaaron/kaggle-Rain)
+**UPDATE (2 Jan 2016):** The code is now available on GitHub: [https://github.com/simaaron/kaggle-Rain](https://github.com/simaaron/kaggle-Rain)
 
 
